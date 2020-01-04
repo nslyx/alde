@@ -20,13 +20,13 @@ fi
 
 # 增量信息
 ctm=`date +'%Y-%m-%d %H:%M:%S'`
-str="[${ctm}] To be or not, that's a question."
+str="[${ctm}]"
 # 追加入文件
 echo ${str} >> ${WTD}/${WTF}
 
 # Git 提交
-git add .
-git commit -m "Submit[${ctm}]"
-git pull
-git push -f
+git add . >> ${WTD}/${WTF}
+git commit -m "Submit[${ctm}]" >> ${WTD}/${WTF}
+git pull >> ${WTD}/${WTF}
+git push -f >> ${WTD}/${WTF}
 
