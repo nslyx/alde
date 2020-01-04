@@ -24,8 +24,15 @@ str="[${ctm}]"
 # 追加入文件
 echo ${str} >> ${WTD}/${WTF}
 
+GL=''
+export GL
+
 # Git 提交
 git add .
-git commit -m "Submit[${ctm}]"
-git pull
-git push -f
+git commit -m "Submit[${ctm}]" | xargs -I "{}" GL=${GL}"\n{}"  
+git pull | xargs -I "{}" GL=${GL}"\n{}"
+git push -f | xargs -I "{}" GL=${GL}"\n{}"
+
+# 信息保存，下次提交
+echo ${GL} >> ${WTD}/${WTF} 
+
