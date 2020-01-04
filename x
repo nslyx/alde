@@ -13,7 +13,7 @@ if [[ ! -d ${WTD} ]]; then
 fi
 
 # 创建增量文件
-WTF=`date +'%Y%m%d'`
+WTF=`date +'%Y%m'`
 if [[ ! -f ${WTD}/${WTF} ]]; then
  touch ${WTD}/${WTF}
 fi
@@ -25,8 +25,7 @@ str="[${ctm}]"
 echo ${str} >> ${WTD}/${WTF}
 
 # Git 提交
-git add . >> ${WTD}/${WTF}
-git commit -m "Submit[${ctm}]" >> ${WTD}/${WTF}
-git pull >> ${WTD}/${WTF}
-git push -f >> ${WTD}/${WTF}
-
+git add .
+git commit -m "Submit[${ctm}]"
+git pull
+git push -f
